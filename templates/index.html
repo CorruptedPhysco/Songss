@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Song List</h1>
+        <ul class="song-list">
+            {% for song in songs %}
+            <li>
+                <span>{{ song }}</span>
+                <button onclick="copyToClipboard('{{ song }}')">Copy</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Copied: ' + text);
+        }
+    </script>
+</body>
+</html>
